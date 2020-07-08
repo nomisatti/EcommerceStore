@@ -1,0 +1,75 @@
+/*
+** Style Simple Ecommerce Theme for Bootstrap 4
+** Created by T-PHP https://t-php.fr/43-theme-ecommerce-bootstrap-4.html
+*/
+.bloc_left_price {
+    color: #c01508 !important;
+    text-align: center !important;
+    font-weight: bold !important;
+    font-size: 150% !important;
+}
+.category_block li:hover {
+    background-color: #007bff !important;
+}
+.category_block li:hover a {
+    color: #ffffff !important;
+}
+.category_block li a {
+    color: #343a40 !important;
+}
+.add_to_cart_block .price {
+    color: #c01508 !important;
+    text-align: center !important;
+    font-weight: bold !important;
+    font-size: 200% !important;
+    margin-bottom: 0 !important;
+}
+.add_to_cart_block .price_discounted {
+    color: #343a40 !important;
+    text-align: center !important;
+    text-decoration: line-through !important;
+    font-size: 140% !important;
+}
+.product_rassurance {
+    padding: 10px !important;
+    margin-top: 15px !important;
+    background: #ffffff !important;
+    border: 1px solid #6c757d !important;
+    color: #6c757d !important;
+}
+.product_rassurance .list-inline {
+    margin-bottom: 0 !important;
+    text-transform: uppercase !important;
+    text-align: center !important;
+}
+.product_rassurance .list-inline li:hover {
+    color: #343a40 !important;
+}
+.reviews_product .fa-star {
+    color: gold !important;
+}
+.pagination {
+    margin-top: 20px !important;
+}
+footer {
+    background: #343a40 !important;
+    padding: 40px !important;
+}
+footer a {
+    color: #f8f9fa!important
+}
+
+.table-responsive img{
+    height: 50px !important;
+    width: 50px !important;
+}
+.badge-light {
+    margin-left: 5px !important;
+}
+
+.mainlogo {
+    width: 20% !important;
+}
+.mainlogo img {
+    width: 100% !important;
+}
