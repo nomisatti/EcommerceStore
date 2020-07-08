@@ -12,6 +12,7 @@ function ProductsLists() {
     const [currentPage, setCurrentPage] = useState(1);
     const [postsPerPage] = useState(36);
     const [cart , setCart] = useContext(CartContext)
+    const [quantity , setQuantity] = useState(0)
 
 
     const indexOfLastPost = currentPage * postsPerPage;
@@ -23,8 +24,15 @@ function ProductsLists() {
   
     const addToCart  = (productDetails) => {
          const product = productDetails
-         setCart(current => [...current , product])
-         console.log(cart)
+         if(product["Quantity"]){
+            setQuantity(++product["Quantity"] )
+          }
+          else{
+            setQuantity(1)
+            product["Quantity"] = 1
+            setCart(current => [...current , product])  
+          }
+         console.log(cart,quantity)
        
    }
     return (

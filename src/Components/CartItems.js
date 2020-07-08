@@ -6,12 +6,11 @@ import "./CartItem.css"
 
 function CartItems() {
     let [cart, setCart] = useContext(CartContext)
-    const totalPrice = cart.reduce((acc, curr) => acc + curr.price, 0).toFixed(2);
 
+    const totalPrice = cart.reduce((acc, curr) => acc + (curr.price * curr.Quantity), 0).toFixed(2);
     const deleteItem = (product) => {
         var result = window.confirm("Are you sure you want to remove this product?");
         if (result) {
-            cart = cart.filter(cart => cart.name !== product);
             setCart(cart.filter(cart => cart.name !== product))
         }
 
@@ -31,8 +30,11 @@ function CartItems() {
                                     <th scope="col"> </th>
                                     <th scope="col">Product</th>
                                     <th scope="col">Available</th>
-                                    <th scope="col" className="text-right">Price</th>
-                                    <th> </th>
+                                    <th scope="col" className="text-right">Quantity</th>
+                                    <th scope="col" className="text-right">Per Unit Price</th>
+                                    <th scope="col" className="text-right">Total Price</th>  
+                                    <th scope="col">Action</th>
+
                                 </tr>
                             </thead>
                             <tbody>
@@ -43,8 +45,12 @@ function CartItems() {
                                             <td><img src={productDetails.image} alt={productDetails.name} /> </td>
                                             <td>{productDetails.name}</td>
                                             <td>In stock</td>
+                                            <td><input className="form-control" type="text" defaultValue={productDetails.Quantity} disabled={true} /></td>
                                             <td className="text-right">${productDetails.price}</td>
+                                            <td className="text-right">${productDetails.price * productDetails.Quantity}</td>
+
                                             <td className="text-right"><button onClick={() => deleteItem(productDetails.name)} className="btn btn-sm btn-danger"><i className="fa fa-trash"></i> </button> </td>
+
                                         </tr>
 
                                     )

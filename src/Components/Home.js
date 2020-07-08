@@ -1,4 +1,4 @@
-import React, {  useContext } from 'react';
+import React, {  useContext, useState } from 'react';
 import ProductsData from '../Data/Product.json'
 import ControlledCarousel from "./ControlledCarousel";
 import { CartContext } from '../context/CartContext'
@@ -8,13 +8,21 @@ import "./Products.css"
 function Home() {
 
   const [cart , setCart] = useContext(CartContext)
-
+  const [quantity , setQuantity] = useState(0)
   
   let Products = ProductsData.slice(0, 12)
+
   const addToCart  = (productDetails) => {
      const product = productDetails
-      setCart(current => [...current , product])   
-      console.log(cart)
+      if(product["Quantity"]){
+        setQuantity(++product["Quantity"] )
+      }
+      else{
+        setQuantity(1)
+        product["Quantity"] = 1
+        setCart(current => [...current , product])  
+      }
+        console.log(cart,quantity)
 }
   return (
 

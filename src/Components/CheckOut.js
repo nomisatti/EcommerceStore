@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom'
 
 function CheckOut() {
     const [cart, setCart] = useContext(CartContext)
-    const totalPrice = cart.reduce((acc, curr) => acc + curr.price, 0).toFixed(2);
+    const totalPrice = cart.reduce((acc, curr) => acc + (curr.price * curr.Quantity), 0).toFixed(2);
     const checkOut = () => {
         setCart([]);
 
@@ -25,8 +25,9 @@ function CheckOut() {
                                     <tr>
                                         <th scope="col"> </th>
                                         <th scope="col">Product</th>
-                                        <th scope="col" className="text-right">Price</th>
-                                        <th> </th>
+                                        <th scope="col" className="text-right">Quantity</th>
+                                        <th scope="col" className="text-right">Per Unit Price</th>
+                                        <th scope="col" className="text-right">Total Price</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -36,7 +37,10 @@ function CheckOut() {
                                             <tr key={productDetails.sku}>
                                                 <td><img src={productDetails.image} alt={productDetails.name} /> </td>
                                                 <td>{productDetails.name}</td>
+                                                <td><input className="form-control" type="text" defaultValue={productDetails.Quantity} disabled={true} /></td>
                                                 <td className="text-right">${productDetails.price}</td>
+                                                <td className="text-right">${productDetails.price * productDetails.Quantity}</td>
+
                                             </tr>
 
                                         )
