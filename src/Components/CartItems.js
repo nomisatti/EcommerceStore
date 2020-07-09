@@ -11,7 +11,8 @@ function CartItems() {
     const deleteItem = (product) => {
         var result = window.confirm("Are you sure you want to remove this product?");
         if (result) {
-            setCart(cart.filter(cart => cart.name !== product))
+            product["Quantity"] = 0
+            setCart(cart.filter(cart => cart.name !== product.name))
         }
 
     }
@@ -47,9 +48,9 @@ function CartItems() {
                                             <td>In stock</td>
                                             <td><input className="form-control" type="text" defaultValue={productDetails.Quantity} disabled={true} /></td>
                                             <td className="text-right">${productDetails.price}</td>
-                                            <td className="text-right">${productDetails.price * productDetails.Quantity}</td>
+                                            <td className="text-right">${(productDetails.price * productDetails.Quantity).toFixed(2)}</td>
 
-                                            <td className="text-right"><button onClick={() => deleteItem(productDetails.name)} className="btn btn-sm btn-danger"><i className="fa fa-trash"></i> </button> </td>
+                                            <td className="text-right"><button onClick={() => deleteItem(productDetails)} className="btn btn-sm btn-danger"><i className="fa fa-trash"></i> </button> </td>
 
                                         </tr>
 

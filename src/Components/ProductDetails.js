@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext,useState } from 'react';
 import 'bootstrap/dist/css/bootstrap.css';
 import { useParams } from 'react-router-dom'
 import { CartContext } from '../context/CartContext'
@@ -9,19 +9,29 @@ import "./ProductDetails.css"
 function ProductDetails() {
 
     const { name } = useParams();
+    const [quantity , setQuantity] = useState(0)
+
     let ProductDetails = ProductsData.find(obj => obj.name === name);
 
     const [cart, setCart] = useContext(CartContext)
 
     const addToCart = (productDetails) => {
         const product = productDetails
-        setCart(current => [...current, product])
-        console.log(cart)
+        if(product["Quantity"]){
+            setQuantity(++product["Quantity"] )
+          }
+          else{
+            setQuantity(1)
+            product["Quantity"] = 1
+            setCart(current => [...current , product])  
+          }
+
+        console.log(cart,quantity)
     }
 
     return (
         ProductDetails ? (
-            <div className="container">
+            <div className="container productDetailsContainer">
                 <div className="card">
                     <div className="row">
                         <aside className="col-sm-5 border-right">

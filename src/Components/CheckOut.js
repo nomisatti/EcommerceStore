@@ -39,7 +39,7 @@ function CheckOut() {
                                                 <td>{productDetails.name}</td>
                                                 <td><input className="form-control" type="text" defaultValue={productDetails.Quantity} disabled={true} /></td>
                                                 <td className="text-right">${productDetails.price}</td>
-                                                <td className="text-right">${productDetails.price * productDetails.Quantity}</td>
+                                                <td className="text-right">${(productDetails.price * productDetails.Quantity).toFixed(2)}</td>
 
                                             </tr>
 
